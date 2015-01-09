@@ -9,11 +9,21 @@ Compressed the following images:
 2. profilepic.jpg
 3. pizza.png
 4. pizzeria.jpg
+5. mobilewebdev.jpg
+6. cam_be_like.jpg
 
 Grabbed the images that were being pulled off the internet
 1. 2048.jpg
 2. websitePerf.jpg
 3. mobileWeb.jpg
+
+Resized
+1. pizzeria.jpg
+2. Created an even smaller pizzeriaSmall.jpg for index.html
+
+Changed the css link for print.css to be targeted at print only
+
+Compressed the style.css
 
 
 
