@@ -334,28 +334,31 @@ var ingredientItemizer = function(string) {
 
 // Returns a string with random pizza ingredients nested inside <li> tags
 var makeRandomPizza = function() {
-  var pizza = "";
+
+  var pizza = [""];
 
   var numberOfMeats = Math.floor((Math.random() * 4));
   var numberOfNonMeats = Math.floor((Math.random() * 3));
   var numberOfCheeses = Math.floor((Math.random() * 2));
 
   for (var i = 0; i < numberOfMeats; i++) {
-    pizza = pizza + ingredientItemizer(selectRandomMeat());
+    pizza.push(ingredientItemizer(selectRandomMeat()));
   }
 
   for (var i = 0; i < numberOfNonMeats; i++) {
-    pizza = pizza + ingredientItemizer(selectRandomNonMeat());
+    pizza.push(ingredientItemizer(selectRandomNonMeat()));
   }
 
   for (var i = 0; i < numberOfCheeses; i++) {
-    pizza = pizza + ingredientItemizer(selectRandomCheese());
+    pizza.push(ingredientItemizer(selectRandomCheese()));
   }
 
-  pizza = pizza + ingredientItemizer(selectRandomSauce());
-  pizza = pizza + ingredientItemizer(selectRandomCrust());
+  pizza.push(ingredientItemizer(selectRandomSauce()));
+  pizza.push(ingredientItemizer(selectRandomCrust()));
 
-  return pizza;
+  var pizzaStr = pizza.join('\n');
+
+  return pizzaStr;
 }
 
 // returns a DOM element for each pizza
@@ -383,6 +386,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
+  console.log(this.pizzaContainer);
 
 
   pizzaDescriptionContainer.classList.add("col-md-6");
@@ -398,6 +402,17 @@ var pizzaElementGenerator = function(i) {
 
   return pizzaContainer;
 }
+
+pizzaElementGenerator.prototype.test = "test";
+
+pizzaElementGenerator.prototype.pizzaContainer  = document.createElement("div");
+pizzaElementGenerator.prototype.pizzaImageContainer = document.createElement("div");
+pizzaElementGenerator.prototype.pizzaImage = document.createElement("img");
+pizzaElementGenerator.prototype.pizzaDescriptionContainer = document.createElement("div");
+pizzaElementGenerator.prototype.pizzaName = document.createElement("h4");
+pizzaElementGenerator.prototype.ul = document.createElement("ul");
+
+
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
