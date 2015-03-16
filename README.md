@@ -4,7 +4,7 @@ Remove render-blocking Javascript by making the call to google analyics.js be as
 
 Optimize CSS Delivery by removing the call to font.googleapis for Open Sans
 
-Compressed the following images:
+### Compressed the following images:
 1. 2048.png
 2. profilepic.jpg
 3. pizza.png
@@ -12,24 +12,25 @@ Compressed the following images:
 5. mobilewebdev.jpg
 6. cam_be_like.jpg
 
-Grabbed the images that were being pulled off the internet
+### Grabbed the images that were being pulled off the internet
 1. 2048.jpg
 2. websitePerf.jpg
 3. mobileWeb.jpg
 
-Resized
+### Resized
 1. pizzeria.jpg
 2. Created an even smaller pizzeriaSmall.jpg for index.html
 
+### Other Notes
 Changed the css link for print.css to be targeted at print only
-
 Compressed the style.css
 
-Performance
+### Performance
 1. Changed querySelector to getElementById
 2. Changed querySelectorAll to getElementsByTagName
 3. Use String builder for makeRandomPizz Function
-
+4. Move code outside of for loops that didn't need to be there
+5. Moved functions outside of resize pizza
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 

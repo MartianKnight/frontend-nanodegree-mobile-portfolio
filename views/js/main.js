@@ -418,8 +418,6 @@ pizzaElementGenerator.prototype.ul = document.createElement("ul");
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
-
-
   changeSliderLabel(size);
 
   changePizzaSizes(size);
@@ -448,7 +446,7 @@ function changeSliderLabel(size) {
   }
 }
 
-// Iterates through pizza elements on the page and changes their widths
+// Moved some of the renders outside of the forloop
 function changePizzaSizes(size) {
   var pizzaContainers = document.getElementsByClassName("randomPizzaContainer");
   var dx = determineDx(pizzaContainers[0], size);
@@ -518,13 +516,16 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// Huge performance difference when document.body.scrollTop is moved outside
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover');
+  var phase;
+  var topscroll = document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    phase = Math.sin((topscroll / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -553,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
