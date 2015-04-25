@@ -382,7 +382,7 @@ var pizzaElementGenerator = function(i) {
   pizzaImageContainer.classList.add("col-md-6");
 
   //Had to change b/c image changes
-  pizzaImage.src = "images/pizza.jpg";
+  pizzaImage.src = "images/pizza.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.jpg";
+    elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
